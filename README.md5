@@ -1,0 +1,20 @@
+This program i wrote is named Hardware identifier. 
+
+ASM--> C ---> PERL the languages i used to create this
+
+
+This is so far soley runs on LINUX machines but if ur windows have perl 
+you could execute it by running perl analyze.pl using system administrative privilages. 
+On linux to run - sudo ./analyze.pl 
+
+This will give you all your hardware id and names vendors manufactures. 
+
+I might have missed few thing but cant recall feel free to use this at your own risk.
+
+If you run this and appreantly a nuclear power plant or running this code caused nuclear explosion!
+ i shall not be responsible for it!!!
+
+Hope this will help those looking and searching a drivers for their hardwares. Hope it helps out. 
+
+Please Know what your doing !!! Have fun and God Bless. 
+
