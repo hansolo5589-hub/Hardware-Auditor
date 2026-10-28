@@ -1,20 +1,57 @@
-This program i wrote is named Hardware identifier. 
+⚙️ Hardware Device Auditor (HW-Auditor)
+> **Developer:** Mohd Firoz Hanif (`hansolo5589`)  
+> **Language Stack:** Assembly (x86_64 NASM) ➔ C (`maincpuid.c`) ➔ Perl (`analyze.pl`)  
 
-ASM--> C ---> PERL the languages i used to create this
+## ⚠️ WARNING / DISCLAIMER
 
+> Please proceed with caution if you are trying to install or run this. If you cause a nuclear reaction or a 
+nuclear explosion, **DONT FUCKIN COME CRYING TO ME I DONT CARE -NOT RESPONSIBLE!!
+**Please do your research and know what you are doing before proceeding!** Use at your own risk.
 
-This is so far soley runs on LINUX machines but if ur windows have perl 
-you could execute it by running perl analyze.pl using system administrative privilages. 
-On linux to run - sudo ./analyze.pl 
+## 📂 Project Structure
 
-This will give you all your hardware id and names vendors manufactures. 
+```text
+asmcodes/
+├── hw-id.asm       # Low-level x86_64 assembly backend (CPUID & raw PCI I/O port mapping)
+├── maincpuid.c     # C bridge handling iopl(3) permissions and full PCI bus/device/function scanning
+├── analyze.pl      # Perl orchestration engine parsing raw output, DMI metadata, storage, and network info
+└── README.md5      # Original project documentation notes
 
-I might have missed few thing but cant recall feel free to use this at your own risk.
+🚀 Overview
+Hardware Device Auditor is a hybrid systems-level tool designed to extract raw hardware identities, 
+CPU specifications, PCI device registries, motherboard DMI metadata, storage models, and 
+network interfaces directly from hardware registers and kernel interfaces.
 
-If you run this and appreantly a nuclear power plant or running this code caused nuclear explosion!
- i shall not be responsible for it!!!
+It bypasses standard high-level abstractions by talking directly to CPU instructions (CPUID) 
+and hardware I/O ports (0xCF8 and 0xCFC) via C and Assembly, orchestrated seamlessly through a Perl frontend.
 
-Hope this will help those looking and searching a drivers for their hardwares. Hope it helps out. 
+🛠️ Requirements & Execution
+Linux (Primary Target)
+Designed and tested on Linux environments with root/administrative privileges.
 
-Please Know what your doing !!! Have fun and God Bless. 
+Execution Command:
 
+Bash
+sudo perl analyze.pl
+
+Windows Support(NEVER TESTED IT YETT!! DONT CARE ABOUT WINDOWS ...DUHHH!!!!)
+BUT---If your Windows machine has a Perl interpreter installed, 
+you can execute it and try it using administrative privileges 
+
+🔍 Features & Data Extracted
+CPU Metrics: Fetches raw CPU Vendor ID and Brand strings directly via assembly CPUID leaves.
+PCI Bus Scanner: Iterates through buses, devices, and functions to query vendor and 
+device IDs via low-level I/O port instructions.
+
+Motherboard DMI & BIOS Info: Pulls board vendor, name, serial number, 
+BIOS version, and release date from /sys/class/dmi/id/.
+
+Storage & Network Auditor: Scans block devices, models, MAC addresses, and interface states.
+
+GDID Fingerprinting: Generates a unique system fingerprint string combining baseboard serial 
+and primary network MAC metadata.
+
+Hope this helps those looking and searching for hardware information and device details. 
+Have fun, explore the code, and God Bless!
+
+Thank you...
